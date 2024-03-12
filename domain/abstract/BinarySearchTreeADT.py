@@ -41,3 +41,7 @@ class BinarySearchTreeADT(ABC):
     @abstractmethod
     def size(self) -> int:
         ...
+
+    @abstractmethod
+    def degree(self, key: object) -> int:
+        ...

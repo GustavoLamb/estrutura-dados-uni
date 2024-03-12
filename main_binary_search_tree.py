@@ -1,6 +1,10 @@
 from domain import BinarySearchTree
 
 
+def test_grau_no_bst(binary_search_tree: BinarySearchTree, key: object):
+    print(f'Grau do nó {key} é:', binary_search_tree.degree(key))
+
+
 def test_tamanho_binary_search_tree(binary_search_tree: BinarySearchTree):
     print("Tamanho da árvore é de:", binary_search_tree.size())
 
@@ -54,6 +58,7 @@ def main() -> None:
         binary_tree.insert(key, key // 2)
 
     print(binary_tree)
+    # test_grau_no_bst(binary_tree, 22)
     # test_tamanho_binary_search_tree(binary_tree)
     # test_operacoes_gerais_bst(binary_tree)
 

@@ -85,6 +85,20 @@ class BinarySearchTree(BinarySearchTreeADT):
 
         return size(self._root)
 
+    def degree(self, key: object) -> int:
+        def degree(current: Node, key: object) -> int:
+            if current is None:
+                return -1
+
+            if current.key == key:
+                left_node = 1 if current.left else 0
+                right_node = 1 if current.right else 0
+                return left_node + right_node
+
+            return degree(current.next(key), key)
+
+        return degree(self._root, key)
+
     def _delete_by_copying(self, key: object) -> bool:
         parent: Node = None
         current: Node = None
