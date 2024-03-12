@@ -1,6 +1,10 @@
 from domain import BinarySearchTree
 
 
+def test_tamanho_binary_search_tree(binary_search_tree: BinarySearchTree):
+    print("Tamanho da árvore é de:", binary_search_tree.size())
+
+
 def test_operacoes_gerais_bst(binary_tree: BinarySearchTree):
     # Procurando chave 14, mostra valor 7:
     print("Procurnando valor da  chave 14:", binary_tree.search(14))
@@ -49,7 +53,10 @@ def main() -> None:
     for key in [8, 4, 2, 6, 12, 10, 14]:
         binary_tree.insert(key, key // 2)
 
+    print(binary_tree)
+    # test_tamanho_binary_search_tree(binary_tree)
     # test_operacoes_gerais_bst(binary_tree)
+
 
 if __name__ == '__main__':
     main()

@@ -76,6 +76,15 @@ class BinarySearchTree(BinarySearchTreeADT):
                 if current.right:
                     queue.append(current.right)
 
+    def size(self) -> int:
+        def size(current: Node) -> int:
+            if current is None:
+                return 0
+
+            return 1 + size(current.left) + size(current.right);
+
+        return size(self._root)
+
     def _delete_by_copying(self, key: object) -> bool:
         parent: Node = None
         current: Node = None
