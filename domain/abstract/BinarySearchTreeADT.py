@@ -37,3 +37,7 @@ class BinarySearchTreeADT(ABC):
     @abstractmethod
     def level_order_transversal(self) -> None:
         ...
+
+    @abstractmethod
+    def size(self) -> int:
+        ...
