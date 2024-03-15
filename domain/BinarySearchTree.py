@@ -85,6 +85,20 @@ class BinarySearchTree(BinarySearchTreeADT):
 
         return size(self._root)
 
+    def descendent(self, key: object) -> str:
+        descendent_queue = []
+
+        def descendent(current: Node) -> None:
+            if current:
+                descendent(current.left)
+                descendent_queue.append(current)
+                descendent(current.right)
+
+        parrent: Node = self._search_node(key)
+        descendent(parrent)
+
+        return ' '.join(f'{numero}' for numero in descendent_queue) if len(descendent_queue) > 0 else None
+
     def degree(self, key: object) -> int:
         def degree(current: Node, key: object) -> int:
             if current is None:
@@ -156,6 +170,18 @@ class BinarySearchTree(BinarySearchTreeADT):
                 parent.right = next_node
 
         return True
+
+    def _search_node(self, key) -> Node:
+        def search_node(current: Node, key: object) -> Node:
+            if current is None:
+                return None
+
+            elif key == current.key:
+                return current
+
+            return search_node(current.next(key), key)
+
+        return search_node(self._root, key)
 
     def _get_parent(self, key: object) -> tuple[Node, Node]:
         parent: Node = None
