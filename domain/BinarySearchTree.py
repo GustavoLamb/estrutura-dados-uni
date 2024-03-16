@@ -113,6 +113,16 @@ class BinarySearchTree(BinarySearchTreeADT):
 
         return degree(self._root, key)
 
+    def depth(self, key: object) -> int:
+        def depth(current: Node, key: object, count: int) -> int:
+            if current is None:
+                return -1
+            if current.key == key:
+                return count
+            count += 1
+            return depth(current.next(key), key, count)
+        return depth(self._root, key, 0)
+
     def _delete_by_copying(self, key: object) -> bool:
         parent: Node = None
         current: Node = None
