@@ -12,6 +12,9 @@ def test_grau_no_bst(binary_search_tree: BinarySearchTree, key: object):
 def test_tamanho_binary_search_tree(binary_search_tree: BinarySearchTree):
     print("Tamanho da árvore é de:", binary_search_tree.size())
 
+def test_depth_binary_search_tree(binary_search_tree: BinarySearchTree, key: object):
+    print(binary_search_tree.depth(key))
+
 
 def test_operacoes_gerais_bst(binary_tree: BinarySearchTree):
     # Procurando chave 14, mostra valor 7:
@@ -63,6 +66,7 @@ def main() -> None:
 
     print(binary_tree)
     test_descendent_no_bst(binary_tree, 22)
+    test_depth_binary_search_tree(binary_tree, 8)
     # test_grau_no_bst(binary_tree, 22)
     # test_tamanho_binary_search_tree(binary_tree)
     # test_operacoes_gerais_bst(binary_tree)
