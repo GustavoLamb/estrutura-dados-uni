@@ -68,7 +68,7 @@ def main() -> None:
     test_descendent_no_bst(binary_tree, 22)
     test_depth_binary_search_tree(binary_tree, 8)
     # test_grau_no_bst(binary_tree, 22)
-    # test_tamanho_binary_search_tree(binary_tree)
+    test_tamanho_binary_search_tree(binary_tree._root, 6)
     # test_operacoes_gerais_bst(binary_tree)
 
 

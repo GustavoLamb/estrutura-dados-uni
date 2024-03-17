@@ -113,6 +113,36 @@ class BinarySearchTree(BinarySearchTreeADT):
 
         return degree(self._root, key)
 
+    
+    def height(self, key: object) -> int:
+        def height(current: Node, key: object) -> int:
+            if current is None:
+                return -1
+            
+            if current.key == key:
+                return self._height(current)
+            
+            left_node = height(current.left, key)
+            right_node = height(current.right, key)
+
+            if left_node == -1 and right_node == -1:
+                return -1
+            elif left_node == -1:
+                return right_node
+            elif right_node == -1:
+                return left_node
+            else:
+                return min(left_node, right_node)
+    
+    def _height(self, current: Node):
+        if current is None:
+            return -1
+        
+        left_node = self._height(current.left)
+        right_node = self._height(current.right)
+
+        return 1 + max(left_node, right_node)
+
     def depth(self, key: object) -> int:
         def depth(current: Node, key: object, count: int) -> int:
             if current is None:

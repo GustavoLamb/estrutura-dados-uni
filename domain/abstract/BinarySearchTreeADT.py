@@ -51,5 +51,9 @@ class BinarySearchTreeADT(ABC):
         ...
 
     @abstractmethod
+    def height(self, key: object) -> int:
+        ...
+        
+    @abstractmethod
     def depth(self, key: object) -> int:
         ...
