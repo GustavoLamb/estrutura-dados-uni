@@ -133,6 +133,7 @@ class BinarySearchTree(BinarySearchTreeADT):
                 return left_node
             else:
                 return min(left_node, right_node)
+        return height(self._root, key)
     
     def _height(self, current: Node):
         if current is None:
