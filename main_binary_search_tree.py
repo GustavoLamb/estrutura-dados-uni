@@ -1,20 +1,19 @@
 from domain import BinarySearchTree
 
-
-def test_descendent_no_bst(binary_search_tree: BinarySearchTree, key: object):
-    print(binary_search_tree.descendent(key))
-
+def test_size_no_bst(binary_search_tree: BinarySearchTree):
+    print(f'Quantidade de nós da árvore é:', binary_search_tree.size())
 
 def test_grau_no_bst(binary_search_tree: BinarySearchTree, key: object):
     print(f'Grau do nó {key} é:', binary_search_tree.degree(key))
 
-
-def test_tamanho_binary_search_tree(binary_search_tree: BinarySearchTree, key: object):
-    print("Tamanho da árvore é de:", binary_search_tree.height(key))
+def test_altura_no_bst(binary_search_tree: BinarySearchTree, key: object):
+    print(f'Altura da árvore no nó {key} é de:', binary_search_tree.height(key))
 
 def test_depth_binary_search_tree(binary_search_tree: BinarySearchTree, key: object):
-    print(binary_search_tree.depth(key))
+    print(f'Profundidade da árvore no nó {key} é de:',binary_search_tree.depth(key))
 
+def test_descendent_no_bst(binary_search_tree: BinarySearchTree, key: object):
+    print(f'Descendentes do nó {key} é:',binary_search_tree.descendent(key))
 
 def test_operacoes_gerais_bst(binary_tree: BinarySearchTree):
     # Procurando chave 14, mostra valor 7:
@@ -61,16 +60,15 @@ def test_operacoes_gerais_bst(binary_tree: BinarySearchTree):
 def main() -> None:
     binary_tree: BinarySearchTree = BinarySearchTree()
     # Inicializando a árvore
-    for key in [8, 4, 2, 6, 12, 10, 14]:
+    for key in [8, 4, 2, 6, 12, 10, 14, 1, 3, 5, 7]:
         binary_tree.insert(key, key // 2)
 
     print(binary_tree)
-    test_descendent_no_bst(binary_tree, 22)
-    test_depth_binary_search_tree(binary_tree, 8)
-    # test_grau_no_bst(binary_tree, 22)
-    test_tamanho_binary_search_tree(binary_tree, 12)
-    # test_operacoes_gerais_bst(binary_tree)
-
+    test_size_no_bst(binary_tree)
+    test_grau_no_bst(binary_tree, 8)
+    test_altura_no_bst(binary_tree, 12)
+    test_depth_binary_search_tree(binary_tree, 6)
+    test_descendent_no_bst(binary_tree, 4)
 
 if __name__ == '__main__':
     main()

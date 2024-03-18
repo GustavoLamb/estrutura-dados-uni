@@ -84,21 +84,7 @@ class BinarySearchTree(BinarySearchTreeADT):
             return 1 + size(current.left) + size(current.right);
 
         return size(self._root)
-
-    def descendent(self, key: object) -> str:
-        descendent_queue = []
-
-        def descendent(current: Node) -> None:
-            if current:
-                descendent(current.left)
-                descendent_queue.append(current)
-                descendent(current.right)
-
-        parrent: Node = self._search_node(key)
-        descendent(parrent)
-
-        return ' '.join(f'{numero}' for numero in descendent_queue) if len(descendent_queue) > 0 else None
-
+    
     def degree(self, key: object) -> int:
         def degree(current: Node, key: object) -> int:
             if current is None:
@@ -112,7 +98,6 @@ class BinarySearchTree(BinarySearchTreeADT):
             return degree(current.next(key), key)
 
         return degree(self._root, key)
-
     
     def height(self, key: object) -> int:
         def height(current: Node, key: object) -> int:
@@ -134,15 +119,6 @@ class BinarySearchTree(BinarySearchTreeADT):
             else:
                 return min(left_node, right_node)
         return height(self._root, key)
-    
-    def _height(self, current: Node):
-        if current is None:
-            return -1
-        
-        left_node = self._height(current.left)
-        right_node = self._height(current.right)
-
-        return 1 + max(left_node, right_node)
 
     def depth(self, key: object) -> int:
         def depth(current: Node, key: object, count: int) -> int:
@@ -153,6 +129,29 @@ class BinarySearchTree(BinarySearchTreeADT):
             count += 1
             return depth(current.next(key), key, count)
         return depth(self._root, key, 0)
+
+    def descendent(self, key: object) -> str:
+        descendent_queue = []
+
+        def descendent(current: Node) -> None:
+            if current:
+                descendent(current.left)
+                descendent_queue.append(current)
+                descendent(current.right)
+
+        parrent: Node = self._search_node(key)
+        descendent(parrent)
+
+        return ' '.join(f'{numero}' for numero in descendent_queue) if len(descendent_queue) > 0 else None
+    
+    def _height(self, current: Node):
+        if current is None:
+            return -1
+        
+        left_node = self._height(current.left)
+        right_node = self._height(current.right)
+
+        return 1 + max(left_node, right_node)
 
     def _delete_by_copying(self, key: object) -> bool:
         parent: Node = None
