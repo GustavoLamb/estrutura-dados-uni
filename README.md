@@ -17,3 +17,4 @@ durante a graduação na **Unisinos**
 - Lista simplesmente encadeada
 - Tabela hash estática fechada
 - Árvore binária de pesquisa
+- Árvore qudrática de ponto
