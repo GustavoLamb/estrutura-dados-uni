@@ -5,3 +5,5 @@ from domain.SinglyLinkedList import SinglyLinkedList
 from domain.LinkedStack import LinkedStack
 from domain.ClosedHashing import ClosedHashing
 from domain.BinarySearchTree import BinarySearchTree
+from domain.Point import Point, Node, Interval, Interval2D
+from domain.QuadTree import QuadTree
