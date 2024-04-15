@@ -1,5 +1,5 @@
 from domain.abstract import QuadTreeADT
-from domain import Point, Node, Interval2D
+from domain import QuadTree, Point, Node, Interval2D
 
 
 class QuadTree(QuadTreeADT):
@@ -70,3 +70,15 @@ class QuadTree(QuadTreeADT):
                 return search(current.SE, point)
 
         return search(self._root, point)
+
+    def all_points(self) -> object:
+        listPoints = [] 
+        def all_points(current: Node) -> object:
+            if current:
+                listPoints.append(Point(current.x, current.y))
+                all_points(current.NW)
+                all_points(current.NE)
+                all_points(current.SW)
+                all_points(current.SE)
+        all_points(self._root)
+        return listPoints
