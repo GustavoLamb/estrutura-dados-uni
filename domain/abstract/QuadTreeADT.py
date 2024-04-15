@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+from typing import List
+
 from domain.Point import Point, Interval2D
 
 
@@ -13,6 +15,5 @@ class QuadTreeADT(ABC):
     def query_2D(self, rect: Interval2D) -> None: ...
     @abstractmethod
     def search(self, point: Point) -> object: ...
-
-    # @abstractmethod
-    # def all_points(self) -> List[Point]: ...
+    @abstractmethod
+    def all_points(self) -> List[Point]: ...
