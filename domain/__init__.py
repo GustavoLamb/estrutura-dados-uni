@@ -7,3 +7,4 @@ from domain.ClosedHashing import ClosedHashing
 from domain.BinarySearchTree import BinarySearchTree
 from domain.Point import Point, Node, Interval, Interval2D
 from domain.QuadTree import QuadTree
+from domain.WayTrie import WayTrie
