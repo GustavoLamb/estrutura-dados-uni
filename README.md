@@ -18,3 +18,4 @@ durante a graduação na **Unisinos**
 - Tabela hash estática fechada
 - Árvore binária de pesquisa
 - Árvore qudrática de ponto
+- Árovre WayTrie
