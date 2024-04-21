@@ -4,6 +4,9 @@ from domain import WayTrie
 def test_count_keys_with_prefix(trie: WayTrie, prefix: str):
     print(f"Número de chaves com préfixo {prefix} é: {trie.count_keys_with_prefix(prefix)}")
 
+def test_longest_prefix_of(trie: WayTrie, key: str):
+    print(f"Maior prefixo da chave {key} é: {trie.longest_prefix_of(key)}")
+
 
 if __name__ == '__main__':
     way_trie = WayTrie()
@@ -14,3 +17,4 @@ if __name__ == '__main__':
         way_trie.insert(palavra[0], palavra[1])
 
     test_count_keys_with_prefix(way_trie, 'CA')
+    test_longest_prefix_of(way_trie, "CASA")

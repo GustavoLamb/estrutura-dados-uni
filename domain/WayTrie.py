@@ -86,6 +86,17 @@ class WayTrie(TrieADT):
         node: Node = self._search(self._root, prefix, 0)
         return count_keys_with_prefix(node, prefix, contador)
 
+    def longest_prefix_of(self, key: str) -> int:
+        def longest_prefix_of(current: Node, key: str, word: str) -> str:
+            if current is None:
+                return None
+            if len(word) == len(key) - 1:
+                return word
+            index: int = len(word) if word != "" else 0
+            word += key[index]
+            return longest_prefix_of(current.next[ord(key[index])], key, word)
+        return longest_prefix_of(self._root, key, "")
+
     def _search(self, current: Node, key: object, index: int) -> Node:
         if current is None:
             return None
