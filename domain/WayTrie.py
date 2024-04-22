@@ -96,6 +96,31 @@ class WayTrie(TrieADT):
             word += key[index]
             return longest_prefix_of(current.next[ord(key[index])], key, word)
         return longest_prefix_of(self._root, key, "")
+    
+    def keys_by_pattern(self, pattern: str) -> List[str]:
+        def keys_by_pattern(node: Node, current_word: str, pattern_index: int, results: List[str]) -> None:
+            if node is None:
+                return
+
+            if pattern_index == len(pattern):
+                if node.value is not None:
+                    results.append(current_word)
+                return
+
+            current_char = pattern[pattern_index]
+            if current_char == '.':
+                for child in node.next:
+                    if child is not None:
+                        keys_by_pattern(child, current_word + chr(node.next.index(child)), pattern_index + 1, results)
+            else:
+                child = node.next[ord(current_char)]
+                if child is not None:
+                    keys_by_pattern(child, current_word + current_char, pattern_index + 1, results)
+
+        results: List[str] = []
+        keys_by_pattern(self._root, "", 0, results)
+
+        return ", ".join(results) if results else None
 
     def _search(self, current: Node, key: object, index: int) -> Node:
         if current is None:
