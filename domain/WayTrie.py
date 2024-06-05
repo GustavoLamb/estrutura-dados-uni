@@ -88,7 +88,7 @@ class WayTrie(TrieADT):
         def longest_prefix_of(current: Node, key: str, word: str) -> str:
             if current is None:
                 return None
-            if len(word) == len(key) - 1:
+            if len(word) == len(key):
                 return word
             index: int = len(word) if word != "" else 0
             word += key[index]

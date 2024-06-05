@@ -22,5 +22,5 @@ if __name__ == '__main__':
         way_trie.insert(chave, valor)
 
     test_count_keys_with_prefix(way_trie, 'VA')
-    test_longest_prefix_of(way_trie, "CASAMENTO")
-    test_keys_by_pattern(way_trie, ".....")
+    test_longest_prefix_of(way_trie, "CASA")
+    test_keys_by_pattern(way_trie, "....")
