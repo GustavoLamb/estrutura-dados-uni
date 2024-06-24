@@ -19,3 +19,4 @@ durante a graduação na **Unisinos**
 - Árvore binária de pesquisa
 - Árvore qudrática de ponto
 - Árovre WayTrie
+- Grafos e Grafos ponderados
