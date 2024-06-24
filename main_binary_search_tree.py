@@ -1,19 +1,25 @@
 from domain import BinarySearchTree
 
+
 def test_size_no_bst(binary_search_tree: BinarySearchTree):
     print(f'Quantidade de nós da árvore é:', binary_search_tree.size())
+
 
 def test_grau_no_bst(binary_search_tree: BinarySearchTree, key: object):
     print(f'Grau do nó {key} é:', binary_search_tree.degree(key))
 
+
 def test_altura_no_bst(binary_search_tree: BinarySearchTree, key: object):
     print(f'Altura da árvore no nó {key} é de:', binary_search_tree.height(key))
 
+
 def test_depth_binary_search_tree(binary_search_tree: BinarySearchTree, key: object):
-    print(f'Profundidade da árvore no nó {key} é de:',binary_search_tree.depth(key))
+    print(f'Profundidade da árvore no nó {key} é de:', binary_search_tree.depth(key))
+
 
 def test_descendent_no_bst(binary_search_tree: BinarySearchTree, key: object):
-    print(f'Descendentes do nó {key} é:',binary_search_tree.descendent(key))
+    print(f'Descendentes do nó {key} é:', binary_search_tree.descendent(key))
+
 
 def test_operacoes_gerais_bst(binary_tree: BinarySearchTree):
     # Procurando chave 14, mostra valor 7:
@@ -69,6 +75,7 @@ def main() -> None:
     test_altura_no_bst(binary_tree, 12)
     test_depth_binary_search_tree(binary_tree, 6)
     test_descendent_no_bst(binary_tree, 4)
+
 
 if __name__ == '__main__':
     main()

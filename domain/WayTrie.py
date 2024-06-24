@@ -71,20 +71,54 @@ class WayTrie(TrieADT):
         return results
 
     def count_keys_with_prefix(self, prefix: str) -> int:
-        def count_keys_with_prefix(current: Node, prefix: str, contador: int) -> int:
+        def count_keys_with_prefix(current: Node, contador: int) -> int:
             if current is None:
                 return contador
             if current.value is not None:
                 return contador + 1
             for i in range(WayTrie.R):
-                prefix += chr(i)
-                contador = count_keys_with_prefix(current.next[i], prefix, contador)
-                prefix = prefix[:-1]
+                contador = count_keys_with_prefix(current.next[i], contador)
             return contador
 
         contador: int = 0
         node: Node = self._search(self._root, prefix, 0)
-        return count_keys_with_prefix(node, prefix, contador)
+        return count_keys_with_prefix(node, contador)
+
+    def longest_prefix_of(self, key: str) -> str:
+        def longest_prefix_of(current: Node, key: str, word: str) -> str:
+            if current is None:
+                return None
+            if len(word) == len(key):
+                return word
+            index: int = len(word) if word != "" else 0
+            word += key[index]
+            return longest_prefix_of(current.next[ord(key[index])], key, word)
+        return longest_prefix_of(self._root, key, "")
+    
+    def keys_by_pattern(self, pattern: str) -> List[str]:
+        def keys_by_pattern(node: Node, current_word: str, pattern_index: int, results: List[str]) -> None:
+            if node is None:
+                return
+
+            if pattern_index == len(pattern):
+                if node.value is not None:
+                    results.append(current_word)
+                return
+
+            current_char = pattern[pattern_index]
+            if current_char == '.':
+                for child in node.next:
+                    if child is not None:
+                        keys_by_pattern(child, current_word + chr(node.next.index(child)), pattern_index + 1, results)
+            else:
+                child = node.next[ord(current_char)]
+                if child is not None:
+                    keys_by_pattern(child, current_word + current_char, pattern_index + 1, results)
+
+        results: List[str] = []
+        keys_by_pattern(self._root, "", 0, results)
+
+        return results if len(results) > 0 else None
 
     def _search(self, current: Node, key: object, index: int) -> Node:
         if current is None:
